@@ -25,6 +25,8 @@ body {
   /* setup width container  - this chooses the minimum width between 1280px (the 'wanted' size) and 100% - some padding on each side,
   so on smaller screens the size will be as big as the viewport width -1rem of 'padding' on either side - this way I don't need to use media queries to change the max width
   or change the padding values*/
+
+  /* this decleration initially used locally scoped custom properties but the CSS validator returned an error, even though it would have been valid CSS. */
   width: min(1280px, calc(100% - 2rem));
   margin: 0 auto;
 }
