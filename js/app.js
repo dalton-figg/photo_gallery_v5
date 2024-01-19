@@ -3,6 +3,11 @@
 
 // setup lightbox on page load
 
+// note: there seems to be an issue with the arrows appearing sometimes and other times not - they do work if you are outside of the devtools/responsive mode and sometimes within
+// this is inconsistent however they should be shown by default -- I think this is based on the auto value in the docs which state:
+
+// "Display buttons. 'auto' hides buttons on touch-enabled devices or when only one image is available"
+
 window.addEventListener("load", () => {
   baguetteBox.run(".gallery");
 });
@@ -17,47 +22,16 @@ const searchInput = document.getElementById("search");
 
 const images = document.querySelectorAll("a");
 
-// loop through them and generate a new array of captions
-
-const captions = [];
-
-images.forEach(image => {
-  captions.push(image.dataset.caption);
-});
-
 // add an event listener that triggers anytime a user types in the box (so that the images can update in real time)
 
 searchInput.oninput = () => {
-  // get the value of the input (refers to whatever the user has typed)
-  let search = searchInput.value;
+  // get the value of the input (refers to whatever the user has typed) + account for case sensitivity
+  let search = searchInput.value.toLowerCase();
 
-  // hide all images by default
+  // loop over the images
 
   images.forEach(image => {
-    image.hidden = true;
+    // set the image to hidden if it's caption doesn't include the searched value
+    image.hidden = !image.dataset.caption.includes(search);
   });
-
-  // loop over each caption and check for any matches with the searched value
-
-  captions.forEach(caption => {
-    // if there is a match
-    if (caption.includes(search)) {
-      // loop over each image
-      images.forEach(image => {
-        // check if it's caption matches the actual 'searched' caption and unhides the image
-        if (image.dataset.caption === caption) {
-          image.hidden = false;
-        }
-      });
-    }
-  });
-
-  // if the search input is blank
-
-  if (!search) {
-    // show all images
-    images.forEach(image => {
-      image.hidden = false;
-    });
-  }
 };
