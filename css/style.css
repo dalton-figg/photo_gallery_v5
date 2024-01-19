@@ -18,11 +18,14 @@ html {
 }
 
 body {
+  /* set up basic locally scoped custom properties for the container */
   --max-width: 1280px;
   --padding: 2rem;
   /* increase line-height to a higher value for accessibility */
   line-height: 1.5;
-  /* setup width container */
+  /* setup width container  - this chooses the minimum width between 1280px (the 'wanted' size) and 100% - some padding on each side,
+  so on smaller screens the size will be as big as the viewport width -1rem of 'padding' on either side - this way I don't need to use media queries to change the max width
+  or change the padding values*/
   width: min(var(--max-width), calc(100% - var(--padding)));
   margin: 0 auto;
 }
@@ -45,6 +48,9 @@ select {
 
 /* Utility Classes */
 
+/* tailwind sr-only class so that I can keep the label for the input but have it visually hidden -- anyone using 
+assistive technologies will still be able to access it */
+
 .sr-only {
   position: absolute;
   width: 1px;
@@ -60,13 +66,16 @@ select {
 /* Main Page Styles */
 
 .gallery {
+  /* declare locally scoped custom properties so the grid is more robust */
   --grid-width: 1000px;
   --grid-gap: 2rem;
   --grid-col-size: 200px;
+  /* set up responsive grid without media queries */
   display: grid;
   place-content: center;
   grid-template-columns: repeat(auto-fit, var(--grid-col-size));
   gap: var(--grid-gap);
+  /* set up a basic max-width + center on the page */
   max-width: var(--grid-width);
   margin: 0 auto;
 }
@@ -74,6 +83,7 @@ select {
 /* Form */
 
 .form {
+  /* declare a max-width, center above the gallery + add some space on the top/bottom  */
   margin: 0 auto;
   max-width: 520px;
   margin-block: 2rem;
@@ -81,6 +91,7 @@ select {
 }
 
 .form__input {
+  /* general size styles */
   height: 50px;
   width: 100%;
   padding: 1rem;
