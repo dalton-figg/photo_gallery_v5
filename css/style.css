@@ -59,7 +59,7 @@ select {
 
 /* Main Page Styles */
 
-.grid-container {
+.gallery {
   --grid-width: 1000px;
   --grid-gap: 2rem;
   --grid-col-size: 200px;
