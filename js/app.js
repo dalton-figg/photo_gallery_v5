@@ -14,17 +14,19 @@ window.addEventListener("load", () => {
 
 // -- filter system with original javascript --
 
-// set the search input element to a variable
+/**
+ * Filters a collection of images based on a user-provided search input.
+ *
+ * This function retrieves the value of the input (case-insensitive) and hides images whose captions
+ * do not include the searched value. It loops through the images and sets the 'hidden' property
+ * accordingly.
+ *
+ * @function
+ * @name filterImages
+ * @returns {void}
+ */
 
-const searchInput = document.getElementById("search");
-
-// store all of the images on the page in a variable
-
-const images = document.querySelectorAll("a");
-
-// add an event listener that triggers anytime a user types in the box (so that the images can update in real time)
-
-searchInput.oninput = () => {
+const filterImages = () => {
   // get the value of the input (refers to whatever the user has typed) + account for case sensitivity
   let search = searchInput.value.toLowerCase();
 
@@ -35,3 +37,15 @@ searchInput.oninput = () => {
     image.hidden = !image.dataset.caption.includes(search);
   });
 };
+
+// set the search input element to a variable
+
+const searchInput = document.getElementById("search");
+
+// store all of the images on the page in a variable
+
+const images = document.querySelectorAll("a");
+
+// add an event listener that triggers anytime a user types in the box (so that the images can update in real time)
+
+searchInput.oninput = filterImages;
