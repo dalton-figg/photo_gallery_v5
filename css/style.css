@@ -20,15 +20,12 @@ html {
 }
 
 body {
-  /* set up basic locally scoped custom properties for the container */
-  --max-width: 1280px;
-  --padding: 2rem;
   /* increase line-height to a higher value for accessibility */
   line-height: 1.5;
   /* setup width container  - this chooses the minimum width between 1280px (the 'wanted' size) and 100% - some padding on each side,
   so on smaller screens the size will be as big as the viewport width -1rem of 'padding' on either side - this way I don't need to use media queries to change the max width
   or change the padding values*/
-  width: min(var(--max-width), calc(100% - var(--padding)));
+  width: min(1280px, calc(100% - 2rem));
   margin: 0 auto;
 }
 
