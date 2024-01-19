@@ -1,0 +1,83 @@
+/* -- Base CSS Reset -- */
+
+*,
+::before,
+::after {
+  /* reset basic styles + use a better box model */
+  box-sizing: border-box;
+  padding: 0;
+  margin: 0;
+}
+
+html {
+  /* normalize font-weights across operating systems */
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  scroll-behavior: smooth;
+  text-rendering: optimizeSpeed;
+}
+
+body {
+  --max-width: 1280px;
+  --padding: 2rem;
+  /* increase line-height to a higher value for accessibility */
+  line-height: 1.5;
+  /* setup width container */
+  width: min(var(--max-width), calc(100% - var(--padding)));
+  margin: 0 auto;
+}
+
+img {
+  /* ensure images are responsive, and sent font-style to italic to ensure alt text is more distinguishable */
+  display: block;
+  max-width: 100%;
+  font-style: italic;
+}
+
+/* fix font inheritance on inputs */
+
+input,
+button,
+textarea,
+select {
+  font: inherit;
+}
+
+/* Utility Classes */
+
+.sr-only {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  padding: 0;
+  margin: -1px;
+  overflow: hidden;
+  clip: rect(0, 0, 0, 0);
+  white-space: nowrap;
+  border-width: 0;
+}
+
+/* Main Page Styles */
+
+.grid-container {
+  --grid-gap: 2rem;
+  display: grid;
+  place-content: center;
+  gap: var(--grid-gap);
+  grid-template-columns: repeat(4, 200px);
+}
+
+/* Form */
+
+.form {
+  margin: 0 auto;
+  max-width: 520px;
+  margin-block: 2rem;
+  width: 100%;
+}
+
+.form__input {
+  height: 50px;
+  width: 100%;
+  padding: 1rem
+}
