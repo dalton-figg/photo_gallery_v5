@@ -67,17 +67,17 @@ assistive technologies will still be able to access it */
 /* Main Page Styles */
 
 .gallery {
-  /* declare locally scoped custom properties so the grid is more robust */
+  /* declare locally scoped custom properties so the grid is more robust (fallback values are included on each declaration) */
   --grid-width: 1000px;
   --grid-gap: 2rem;
   --grid-col-size: 200px;
   /* set up responsive grid without media queries */
   display: grid;
   place-content: center;
-  grid-template-columns: repeat(auto-fit, var(--grid-col-size));
-  gap: var(--grid-gap);
+  grid-template-columns: repeat(auto-fit, var(--grid-col-size, 200px));
+  gap: var(--grid-gap, 2rem);
   /* set up a basic max-width + center on the page */
-  max-width: var(--grid-width);
+  max-width: var(--grid-width, 1000px);
   margin: 0 auto;
 }
 
