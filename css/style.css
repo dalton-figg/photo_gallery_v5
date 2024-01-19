@@ -60,11 +60,15 @@ select {
 /* Main Page Styles */
 
 .grid-container {
+  --grid-width: 1000px;
   --grid-gap: 2rem;
+  --grid-col-size: 200px;
   display: grid;
   place-content: center;
+  grid-template-columns: repeat(auto-fit, var(--grid-col-size));
   gap: var(--grid-gap);
-  grid-template-columns: repeat(4, 200px);
+  max-width: var(--grid-width);
+  margin: 0 auto;
 }
 
 /* Form */
@@ -79,5 +83,5 @@ select {
 .form__input {
   height: 50px;
   width: 100%;
-  padding: 1rem
+  padding: 1rem;
 }
