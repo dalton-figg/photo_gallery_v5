@@ -33,7 +33,7 @@ const filterImages = () => {
   // loop over the images
 
   images.forEach(image => {
-    // set the image to hidden if it's caption doesn't include the searched value
+    // set the image to hidden if it's caption doesn't include the searched value -> hides every image except those which match, effectively 'filtering' the content
     image.hidden = !image.dataset.caption.includes(search);
   });
 };
