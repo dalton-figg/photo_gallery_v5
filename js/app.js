@@ -8,8 +8,8 @@
 
 // "Display buttons. 'auto' hides buttons on touch-enabled devices or when only one image is available"
 
-window.addEventListener("load", () => {
-  baguetteBox.run(".gallery");
+window.addEventListener('load', () => {
+	baguetteBox.run('.gallery');
 });
 
 // -- filter system with original javascript --
@@ -27,22 +27,24 @@ window.addEventListener("load", () => {
  */
 
 const filterImages = () => {
-  // get the value of the input (refers to whatever the user has typed) + account for case sensitivity
-  let search = searchInput.value.toLowerCase();
+	// get the value of the input (refers to whatever the user has typed) + account for case sensitivity
+	let search = searchInput.value.toLowerCase();
 
-  // loop over the images
-  // set the image to hidden if it's caption doesn't include the searched value -> hides every image except those which match, effectively 'filtering' the content
+	// loop over the images
+	// set the image to hidden if it's caption doesn't include the searched value -> hides every image except those which match, effectively 'filtering' the content
 
-  images.forEach(image => image.hidden = !image.dataset.caption.includes(search));
+	images.forEach(
+		(image) => (image.hidden = !image.dataset.caption.includes(search))
+	);
 };
 
 // set the search input element to a variable
 
-const searchInput = document.getElementById("search");
+const searchInput = document.getElementById('search');
 
 // store all of the images on the page in a variable
 
-const images = document.querySelectorAll("a");
+const images = document.querySelectorAll('a');
 
 // add an event listener that triggers anytime a user types in the box (so that the images can update in real time)
 
